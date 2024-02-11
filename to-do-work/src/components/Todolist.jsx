@@ -104,6 +104,8 @@ const Todolist = () => {
     });
   };
 
+  const completedTaskCount = taskDone.filter((done) => done).length;
+
   return (
     <div className="to-do-list">
       <h1 className="text-center text-success display-3">To do app</h1>
@@ -139,13 +141,19 @@ const Todolist = () => {
       <button className="btn btn-success p-3 mt-0 mb-2" onClick={addTask}>
         {editingIndex !== null ? "Update" : "Add"} (+)
       </button>
-      <p className="fs-3 py-3">Total tasks: {taskCount}</p>
+      <p className="fs-3 pt-3">Total tasks: {taskCount}</p>
+      <p className="fs-3">Total Completed tasks: {completedTaskCount}</p>
       <ol>
         {tasks.map((taskObject, index) => (
           <li
             key={index}
             style={{
-              color: taskDone[index] ? "green" : "inherit",
+              color:
+                taskObject.priority === "high"
+                  ? "blue"
+                  : taskObject.priority === "medium"
+                  ? "skyblue"
+                  : "red",
               textDecoration: taskDone[index] ? "line-through" : "none",
             }}
           >
