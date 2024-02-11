@@ -1,0 +1,39 @@
+.to-do-list{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  button{
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  li{
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 15px;
+    background-color: hsl(0, 0%, 97%);
+    margin-bottom: 10px;
+    border: 3px solid hsla(0, 0%, 85%, 0.75);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .text{
+    flex: 1;
+  }
+  
+  .label{
+    font-size: 30px;
+  }
+  
+  input[type="text"]{
+    font-size: 1.7rem;
+    text-align: center;
+    border: 2px solid hsla(0, 93%, 5%, 0.5);
+    border-radius: 5px;
+    color: hsla(118, 84%, 29%, 0.863);
+  }
