@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/style.css";
 
 const Todolist = () => {
-  const [tasks, setTasks] = useState([]);
+  const initialTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  const [tasks, setTasks] = useState(initialTasks);
+
   const [newTask, setNewTask] = useState("");
+
   const [editingIndex, setEditingIndex] = useState(null);
-  const [taskCount, setTaskCount] = useState(0);
+
+  const [taskCount, setTaskCount] = useState(initialTasks.length);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleInputChange = (e) => {
     setNewTask(e.target.value);
   };
-
   const addTask = () => {
     if (newTask.trim() !== "") {
       if (editingIndex !== null) {
