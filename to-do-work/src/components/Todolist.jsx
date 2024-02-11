@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/style.css";
 
 const Todolist = () => {
@@ -232,7 +232,24 @@ const Todolist = () => {
             )}
           </li>
         ))}
-      </ol>{" "}
+      </ol>
+
+      <div className="completed-tasks">
+        <h2>Completed Tasks</h2>
+        <ul>
+          {tasks.map((taskObject, index) => {
+            if (taskDone[index]) {
+              return (
+                <li key={index}>
+                  <span>{taskObject.task}</span>
+                  <span>({taskObject.priority})</span>
+                </li>
+              );
+            }
+            return null;
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
