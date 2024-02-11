@@ -22,11 +22,17 @@ const Todolist = () => {
     if (newTask.trim() !== "") {
       if (editingIndex !== null) {
         const updatedTasks = [...tasks];
-        updatedTasks[editingIndex] = newTask;
+        updatedTasks[editingIndex] = {
+          ...updatedTasks[editingIndex],
+          task: newTask, // Update the task name
+        };
         setTasks(updatedTasks);
         setEditingIndex(null);
       } else {
-        const priorityInputs = document.getElementsByName("priority");
+        // Add new task with priority
+        const priorityInputs = document.querySelectorAll(
+          "input[name='priority']"
+        );
         let priority = null;
         for (let input of priorityInputs) {
           if (input.checked) {
@@ -45,12 +51,11 @@ const Todolist = () => {
       setNewTask("");
     }
   };
-
   const editTask = (index) => {
     setEditingIndex(index);
-    setNewTask(tasks[index]);
+    const taskToEdit = tasks[index];
+    setNewTask(taskToEdit.task); // Set the task name for editing
   };
-
   const deleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
@@ -121,7 +126,13 @@ const Todolist = () => {
         />
         <div className="fs-4">
           <span className="me-3">Priority:</span>
-          <input type="radio" id="priority-high" name="priority" value="high" />
+          <input
+            type="radio"
+            id="priority-high"
+            name="priority"
+            value="high"
+            required
+          />
           <label htmlFor="priority-high" className="me-3">
             High
           </label>
@@ -130,11 +141,18 @@ const Todolist = () => {
             id="priority-medium"
             name="priority"
             value="medium"
+            required
           />
           <label htmlFor="priority-medium" className="me-3">
             Medium
           </label>
-          <input type="radio" id="priority-low" name="priority" value="low" />
+          <input
+            type="radio"
+            id="priority-low"
+            name="priority"
+            value="low"
+            required
+          />
           <label htmlFor="priority-low">Low</label>
         </div>
       </div>
@@ -158,7 +176,17 @@ const Todolist = () => {
             }}
           >
             {editingIndex === index ? (
-              <input type="text" value={newTask} onChange={handleInputChange} />
+              <div>
+                <input
+                  type="text"
+                  value={newTask}
+                  onChange={handleInputChange}
+                />
+                <div className="fs-4 mt-3">
+                  <span className="me-3">Priority:</span>
+                  <span>{tasks[index].priority}</span>{" "}
+                </div>
+              </div>
             ) : (
               <div>
                 <span>{taskObject.task}</span>
