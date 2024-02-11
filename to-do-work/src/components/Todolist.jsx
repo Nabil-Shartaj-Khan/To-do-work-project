@@ -159,8 +159,8 @@ const Todolist = () => {
       <button className="btn btn-success p-3 mt-0 mb-2" onClick={addTask}>
         {editingIndex !== null ? "Update" : "Add"} (+)
       </button>
-      <p className="fs-3 pt-3">Total tasks: {taskCount}</p>
-      <p className="fs-3">Total Completed tasks: {completedTaskCount}</p>
+      <p className="fs-3 pt-3 fw-bold">Total tasks: {taskCount}</p>
+
       <ol>
         {tasks.map((taskObject, index) => (
           <li
@@ -236,13 +236,16 @@ const Todolist = () => {
 
       <div className="completed-tasks">
         <h2>Completed Tasks</h2>
+        <p className="fs-3 fw-bold">
+          Total Completed tasks: {completedTaskCount}
+        </p>
         <ul>
           {tasks.map((taskObject, index) => {
             if (taskDone[index]) {
               return (
                 <li key={index}>
                   <span>{taskObject.task}</span>
-                  <span>({taskObject.priority})</span>
+                  <span className="ps-3">({taskObject.priority})</span>
                 </li>
               );
             }
