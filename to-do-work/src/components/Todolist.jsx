@@ -114,8 +114,11 @@ const Todolist = () => {
   return (
     <div className="to-do-list">
       <h1 className="text-center text-success display-3">To do app</h1>
+      <span className="fs-4">
+        Input your task, select priority and then Add
+      </span>
       <hr></hr>
-      <div className="d-flex align-items center justify-content-center">
+      <div className="d-flex align-items-center justify-content-center pt-4">
         <label className="label me-4">Task input-</label>
         <input
           type="text"
@@ -125,7 +128,7 @@ const Todolist = () => {
           className="p-3 pt-4 me-3 mb-4"
         />
         <div className="fs-4">
-          <span className="me-3">Priority:</span>
+          <span className="me-3 fw-bold ps-5">Priority:</span>
           <input
             type="radio"
             id="priority-high"
@@ -159,7 +162,7 @@ const Todolist = () => {
       <button className="btn btn-success p-3 mt-0 mb-2" onClick={addTask}>
         {editingIndex !== null ? "Update" : "Add"} (+)
       </button>
-      <p className="fs-3 pt-3 fw-bold">Total tasks: {taskCount}</p>
+      <p className="fs-3 py-4 fw-bold">Total tasks: {taskCount}</p>
 
       <ol>
         {tasks.map((taskObject, index) => (
@@ -234,9 +237,9 @@ const Todolist = () => {
         ))}
       </ol>
 
-      <div className="completed-tasks">
+      <div className="completed-tasks pt-4">
         <h2>Completed Tasks</h2>
-        <p className="fs-3 fw-bold">
+        <p className="fs-3 pt-3 fw-bold">
           Total Completed tasks: {completedTaskCount}
         </p>
         <ul>
