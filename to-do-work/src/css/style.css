@@ -37,3 +37,15 @@
     border-radius: 5px;
     color: hsla(118, 84%, 29%, 0.863);
   }
+
+
+.left-side{
+  background-color: rgb(157, 170, 182);
+  padding: 40px;
+  max-width: 60%;
+}
+
+.completed-tasks{
+  background-color: rgb(156, 221, 156);
+  padding: 100px;
+}
